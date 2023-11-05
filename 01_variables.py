@@ -1,6 +1,6 @@
 # Variables
 
-my_variable = "My String Variable"
+my_variable = "My String Variable" #18 caracteres
 print(my_variable)
 
 my_int_variable = 5
@@ -17,3 +17,14 @@ print(my_bool_variable)
 #Concatenacion de variables en un print
 
 print (type(print(my_variable, my_int_to_str_variable,my_bool_variable)))
+print("Este es el valor de :", my_variable)
+
+
+# Funciones del Sistema
+
+print(len (my_variable)) #Cuenta los caracteres
+
+# Varaible en una sola linea
+
+
+
