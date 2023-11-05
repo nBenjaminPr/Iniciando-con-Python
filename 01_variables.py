@@ -24,8 +24,30 @@ print("Este es el valor de :", my_variable)
 
 print(len (my_variable)) #Cuenta los caracteres
 
-# Varaible en una sola linea
+# Varaible en una sola linea, es una mala practica
 
 name, surname, alias, age = "Nico", "Cachi", "piter", 25
 print("Me llamo: ",name,surname,"Mi edad es:", age,"y mi alais es:", alias)
 
+# INPUT
+
+#name= input("Cual es tu nombre ")
+#age = input("Cuantos años tiene ")
+
+#print(name)
+#print(age)
+
+# Cambiamos su tipo ¡Cuidado!
+
+#name = 35
+#age = "Pedro"
+#print(name)
+#print(age)
+
+# Forzamos un tipo
+
+address: str = "Mi direcciòn"
+address = 32
+address = True
+address = 0.5
+print(address)
