@@ -26,5 +26,6 @@ print(len (my_variable)) #Cuenta los caracteres
 
 # Varaible en una sola linea
 
-
+name, surname, alias, age = "Nico", "Cachi", "piter", 25
+print("Me llamo: ",name,surname,"Mi edad es:", age,"y mi alais es:", alias)
 
