@@ -1,4 +1,5 @@
 import pandas as pd
 
-df = pd.read_csv("altura_astronautas.cvs")
-df.head(10)
+datos = pd.read_csv("C:/Users/Usuario/Desktop/Escriotrio Nico/PYTHON/CODE/altura_astronautas.csv")
+
+print (datos.head(10))
