@@ -17,6 +17,6 @@ array1 = np.array(lista1)
 array2 = np.array(lista2)
 array3 = np.array(lista3)
 
-lista1 + lista2 + lista3
+print (lista1 + lista2 + lista3)
 
-array1 + array2 + array3
+print(array1 + array2 + array3)
