@@ -1,0 +1,8 @@
+El método **merge** tiene varios parámetros que se pueden utilizar para controlar cómo se realiza la combinación. Los parámetros más importantes son:
+
+- **on:** este parámetro indica la columna o columnas que se van a utilizar para hacer la combinación. Es similar al JOIN en SQL, donde se especifica la columna en la que se van a comparar las filas de las tablas que se quieren unir, **en caso de que tengan el mismo nombre**. Así, por ejemplo, si ambos DataFrame tienen una columna llamada "nombre", basta con que escribamos **pd.merge(df1, df2, on='nombre')**. Si las columnas no tienen el mismo nombre en ambos DataFrames, debemos precisar utilizando **loft_on** y **right_on**
+
+- **how:** este parámetro indica el tipo de combinación que se va a realizar. Los valores posibles son **inner, outer, left y right**, con el mismo sentido que vimos inicialmente. Podemos usarlo como **pd.merge(df1, df2, on='columna_comun', how='inner')**
+
+- **left_index y right_index:** estos parámetros se utilizan cuando se quiere combinar los DataFrames por los índices en lugar de por las columnas. Por ejemplo, **pd.merge(df1, df2, left_index=True, right_index=True)**
+
