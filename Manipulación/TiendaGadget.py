@@ -39,5 +39,6 @@ df_marger = df_pedidos.merge(df_usuarios, on="id_usuario",how="outer")
 #Creamos una columna de Monto de ventas = a la cantidad multiplicado por el precio
 df_marger["monto_venta"] = df_marger["cantidad"] * df_marger["precio"]
 
+df_marger.to_csv("resultado.txt", sep="\t", index=False)
 
 print (df_marger)
