@@ -24,7 +24,7 @@ df = df.fillna(0)
 
 #Le podemos agregar df = df.isna().sum() para obtener la cantidad de nulos
 
-#Para eliminar las filas que contienen al menos un valor NaN df = f.dropna(axis = 0)
+#Para eliminar las filas que contienen al menos un valor NaN df = df.dropna(axis = 0)
 
 #Reemplaza los valores NaN por numeros con df = df.fillna(0)
 
