@@ -2,7 +2,7 @@
 
 
 #- Verifica si existen duplicados luego de eliminar los nulos.
-#- La columna price tiene caracteres como el signo "$",  además de puntos y comas, por lo que se lee como un string y no como un número. Límpiala para poder convertirla a tipo de dato float.
+
 
 import pandas as pd
 
