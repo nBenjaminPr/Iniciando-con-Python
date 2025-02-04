@@ -20,7 +20,7 @@ df = pd.DataFrame({
 })
 
 #Para obtener un DataFrame indicando True o False si cada celda tiene un valor NaN, se
-df = df.isna()
+df = df.fillna(0)
 
 #Le podemos agregar df = df.isna().sum() para obtener la cantidad de nulos
 
