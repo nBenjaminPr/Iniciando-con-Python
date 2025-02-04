@@ -9,11 +9,7 @@ usuarios = {
     'edad': [25, 30, 45, 22, 28]
 }
 
-
 df_usuarios = pd.DataFrame(usuarios)
-
-df_usuarios = df_usuarios.set_index("id_usuario")
-
 
 #Creamos el DataFrame de pedidos
 

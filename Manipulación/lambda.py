@@ -1,0 +1,72 @@
+#Cabe destacar que las funciones de agregación que ofrece **pd.pivot_table** son solo algunas como sum, mean, std, etc. Pero también podemos generar nuestra propia función a aplicar a los valores usando funciones **lambda**, como se muestra a continuación. Recordaremos antes cuál era el DataFrame **df_merged**
+import pandas as pd
+import numpy as np
+
+#Creamos el Data Frame de usuaiors
+
+usuarios = {
+    'id_usuario': [1, 2, 3, 4, 5],
+    'nombre': ['Juan', 'María', 'Pedro', 'Ana', 'Luisa'],
+    'edad': [25, 30, 45, 22, 28]
+}
+
+df_usuarios = pd.DataFrame(usuarios)
+
+#Creamos el DataFrame de pedidos
+
+pedidos = {
+    'id_pedido': [1, 2, 3, 4, 5, 6, 7, 8],
+    'id_usuario': [1, 2, 3, 3, 4, 4, 4, 5],
+    'fecha': ['2022-01-01', '2022-01-01', '2022-01-02', '2022-01-02', '2022-01-02', '2022-01-03', '2022-01-03', '2022-01-04'],
+    'producto': ['A', 'B', 'A', 'B', 'A', 'A', 'B', 'A'],
+    'cantidad': [10, 5, 12, 8, 5, 6, 6, 15],
+    'precio': [100, 50, 120, 80, 150, 150, 100, 90]
+}
+
+df_pedidos = pd.DataFrame(pedidos)
+
+
+#Podemos hacer el cruce con la columna común que tienen ambos DataFrames llamada 'id_usuario', para unir las tablas
+
+df_pedidos = df_pedidos.set_index("id_usuario")
+
+df_marger = df_pedidos.merge(df_usuarios, on="id_usuario",how="outer")
+
+#Creacion de columnas calculadas
+#Creamos una columna de Monto de ventas = a la cantidad multiplicado por el precio
+df_marger["monto_venta"] = df_marger["cantidad"] * df_marger["precio"]
+
+df_marger.to_csv("resultado.txt", sep="\t", index=False)
+
+#FUNCIÓN LAMBDA
+#Creamos una función lambda que calcula el monto total de ventas por usuario
+
+df_pivot_reporte2 = pd.pivot_table(
+        data = df_marger
+    , index = "producto"
+    , values = "monto_venta"
+    , aggfunc= lambda x: x.max() - x.min()
+    , margins = True
+)
+
+# Debemos renombrar la columna calculada a **"rango_venta"** para no confundirla con la originar **monto_venta**.
+df_pivot_reporte2 = df_pivot_reporte2.rename(columns = {'monto_venta': 'rango_venta'})
+
+#- En este caso, x representa a los valores de la columna indicada en **values**, por lo que podemos aplicarle **.max()** y **.min().**
+#- La funcion lambda, se ejecutará para cada producto, A o B
+#- El resultado queda organizado con los productos en el indice, ya que asi fue como lo indicamos.
+
+#Calculemos ahora el peso o porcentaje de participación de cada producto en las ventas totales.
+
+df_pivot_reporte3 = pd.pivot_table(
+        data = df_marger
+        , index=  "producto"
+        , values = "monto_venta"
+        , aggfunc = lambda x: round((x.sum() / df_marger['monto_venta'].sum()) * 100, 2)
+        , margins = True)
+
+df_pivot_reporte3 = df_pivot_reporte3.rename(columns={'monto_venta': 'Porcentaje_ventas'})
+
+df_marger.to_csv("lambda.txt", sep="\t", index=False)
+
+print (df_pivot_reporte3)
