@@ -15,7 +15,7 @@
 import pandas as pd
 
 # Crear un DataFrame de ejemplo
-df = pd.DataFrame({'Edad': [20, 25, 30, 35, 40, 45, 50, 55, 60]})
+df = pd.DataFrame({'Edad': [20, 25, 30, 35, 40, 45, 50, 55, 60, 102]})
 
 # Discretizar los datos en intervalos
 intervalos = [0, 30, 40, 50, 100]  # Definir los intervalos deseados
@@ -27,4 +27,27 @@ etiquetas = ['Joven', 'Adulto joven', 'Adulto', 'Adulto mayor']
 df['GrupoEdad'] = pd.cut(df['Edad'], bins=intervalos, labels=etiquetas)
 
 # Imprimir el DataFrame resultante
-print (df)
+df
+
+#Este procedimiento es de mucha utilidad para etiquetar datos basados en la magnitud de un valor numérico, lo que nos permite interpretar esa información de forma discreta. También podemos utilizar pd.cut() para que los valores discretos de salida sean numéricos, es decir, usar etiquetas numéricas.
+
+#Si deseas utilizar etiquetas numéricas en lugar de etiquetas categóricas al discretizar los datos, puedes asignar valores numéricos a las etiquetas y luego convertir la columna resultante en numérica.
+
+# Crear un DataFrame de ejemplo
+df2 = pd.DataFrame({'Edad': [20, 25, 30, 35, 40, 45, 50, 55, 60]})
+
+# Discretizar los datos en intervalos
+intervalos2 = [0, 30, 40, 50, 100]  # Definir los intervalos deseados
+etiquetas2 = [1, 2, 3, 4]  # Etiquetas numéricas para las categorías
+
+# Discretizar y devolver valores en lugar de intervalos
+df2['GrupoEdad'] = pd.cut(df2['Edad'], bins=intervalos2, labels=etiquetas2)
+
+# Convertir la columna GrupoEdad en numérica
+df2['GrupoEdad'] = pd.to_numeric(df2['GrupoEdad'])
+
+print (df2)
+
+#✔ pd.cut() es útil para agrupar datos numéricos en categorías.
+#✔ Define intervalos con bins y etiquetas con labels.
+#✔ Puedes ajustar los límites de los intervalos con right= o include_lowest=.
