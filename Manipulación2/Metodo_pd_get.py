@@ -14,3 +14,5 @@ df = pd.DataFrame(data)
 df = pd.get_dummies(df, columns = ['Nacionalidad'],drop_first = True)
 
 print (df)
+
+#Puedo crear tantas columnas como categoria y registros tenga
