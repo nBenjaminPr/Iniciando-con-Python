@@ -1,4 +1,4 @@
-#Cabe destacar que las funciones de agregación que ofrece **pd.pivot_table** son solo algunas como sum, mean, std, etc. Pero también podemos generar nuestra propia función a aplicar a los valores usando funciones **lambda**, como se muestra a continuación. Recordaremos antes cuál era el DataFrame **df_merged**
+# Cabe destacar que las funciones de agregación que ofrece **pd.pivot_table** son solo algunas como sum, mean, std, etc. Pero también podemos generar nuestra propia función a aplicar a los valores usando funciones **lambda**, como se muestra a continuación. Recordaremos antes cuál era el DataFrame **df_merged**
 import pandas as pd
 import numpy as np
 
